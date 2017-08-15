@@ -13,31 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.unl.cse.netgroup;
 
-import org.apache.felix.scr.annotations.Activate;
-import org.apache.felix.scr.annotations.Component;
-import org.apache.felix.scr.annotations.Deactivate;
-import org.apache.felix.scr.annotations.Service;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+package org.unl.cse.netgroup.snag.rest;
+
+import org.onlab.rest.AbstractWebApplication;
+
+import java.util.Set;
 
 /**
- * Skeletal ONOS application component.
+ * SNAG REST API web application.
  */
-@Component(immediate = true)
-public class AppComponent {
-
-    private final Logger log = LoggerFactory.getLogger(getClass());
-
-    @Activate
-    protected void activate() {
-        log.info("Started");
+public class SnagWebApplication extends AbstractWebApplication {
+    @Override
+    public Set<Class<?>> getClasses() {
+        return getClasses(SnagWebResource.class);
     }
-
-    @Deactivate
-    protected void deactivate() {
-        log.info("Stopped");
-    }
-
 }

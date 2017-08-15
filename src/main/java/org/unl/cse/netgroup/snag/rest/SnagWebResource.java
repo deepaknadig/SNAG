@@ -13,19 +13,33 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package org.unl.cse.netgroup.snag.rest;
 
-package org.unl.cse.netgroup.snag;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+import org.onosproject.rest.AbstractWebResource;
 
-import org.onlab.rest.AbstractWebApplication;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.core.Response;
 
-import java.util.Set;
+import static org.onlab.util.Tools.nullIsNotFound;
 
 /**
- * Sample REST API web application.
+ * SNAG web resource.
  */
-public class AppWebApplication extends AbstractWebApplication {
-    @Override
-    public Set<Class<?>> getClasses() {
-        return getClasses(AppWebResource.class);
+@Path("")
+public class SnagWebResource extends AbstractWebResource {
+
+    /**
+     * Get SNAG Info.
+     *
+     * @return 200 OK
+     */
+    @GET
+    @Path("info")
+    public Response getGreeting() {
+        ObjectNode node = mapper().createObjectNode().put("SNAG", "Information");
+        return ok(node).build();
     }
+
 }

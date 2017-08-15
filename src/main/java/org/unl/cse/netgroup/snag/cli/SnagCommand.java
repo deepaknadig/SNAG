@@ -13,33 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.unl.cse.netgroup.snag;
+package org.unl.cse.netgroup.snag.cli;
 
-import com.fasterxml.jackson.databind.node.ObjectNode;
-import org.onosproject.rest.AbstractWebResource;
-
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.core.Response;
-
-import static org.onlab.util.Tools.nullIsNotFound;
+import org.apache.karaf.shell.commands.Command;
+import org.onosproject.cli.AbstractShellCommand;
 
 /**
- * Sample web resource.
+ * SNAG CLI command
  */
-@Path("sample")
-public class AppWebResource extends AbstractWebResource {
+@Command(scope = "snag", name = "info",
+         description = "SNAG CLI command")
+public class SnagCommand extends AbstractShellCommand {
 
-    /**
-     * Get hello world greeting.
-     *
-     * @return 200 OK
-     */
-    @GET
-    @Path("")
-    public Response getGreeting() {
-        ObjectNode node = mapper().createObjectNode().put("hello", "world");
-        return ok(node).build();
+    @Override
+    protected void execute() {
+        print("SNAG Applicaiton %s", "Info");
     }
 
 }

@@ -15,19 +15,33 @@
  */
 package org.unl.cse.netgroup.snag;
 
-import org.apache.karaf.shell.commands.Command;
-import org.onosproject.cli.AbstractShellCommand;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.unl.cse.netgroup.snag.AppComponent;
 
 /**
- * Sample Apache Karaf CLI command
+ * Set of tests of the ONOS application component.
  */
-@Command(scope = "onos", name = "sample",
-         description = "Sample Apache Karaf CLI command")
-public class AppCommand extends AbstractShellCommand {
+public class AppComponentTest {
 
-    @Override
-    protected void execute() {
-        print("Hello %s", "World");
+    private AppComponent component;
+
+    @Before
+    public void setUp() {
+        component = new AppComponent();
+        component.activate();
+
+    }
+
+    @After
+    public void tearDown() {
+        component.deactivate();
+    }
+
+    @Test
+    public void basics() {
+
     }
 
 }

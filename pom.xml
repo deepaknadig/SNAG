@@ -21,25 +21,23 @@
     <version>1.0.0</version>
     <packaging>bundle</packaging>
 
-    <description>ONOS OSGi bundle archetype</description>
-    <url>http://onosproject.org</url>
+    <description>SNAG ONOS Application.</description>
+    <url>http://cse.unl.edu/~netgroup</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <onos.version>1.10.3</onos.version>
         <api.version>1.0.0</api.version>
-        <!-- Uncomment to generate ONOS app from this module.-->
         <onos.app.name>org.unl.cse.netgroup.snag</onos.app.name>
         <onos.app.title>SNAG App</onos.app.title>
         <onos.app.origin>Netgroup, University of Nebraska-Lincoln.</onos.app.origin>
         <onos.app.category>default</onos.app.category>
         <api.description>Sample application REST API</api.description>
         <web.context>/onos/snag</web.context>
-        <api.title>Sample app REST API</api.title>
+        <api.title>SNAG REST API</api.title>
         <onos.app.url>http://cse.unl.edu/~netgroup</onos.app.url>
         <api.package>org.unl.cse.netgroup.snag</api.package>
         <onos.app.readme>SNAG ONOS Application.</onos.app.readme>
-     <!--   -->
     </properties>
 
     <dependencies>
