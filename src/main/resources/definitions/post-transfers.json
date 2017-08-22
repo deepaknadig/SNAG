@@ -1,0 +1,36 @@
+{
+  "type": "object",
+  "required": [
+    "username","srchost","dsthost","srcport","dstport","event","filename"
+  ],
+  "properties": {
+    "username": {
+      "type": "string",
+      "example": "testuser"
+    },
+    "srchost": {
+      "type": "string",
+      "example": "10.0.0.1"
+    },
+    "dsthost": {
+      "type": "string",
+      "example": "20.0.0.1"
+    },
+    "srcport": {
+      "type": "string",
+      "example": "11111"
+    },
+    "dstport": {
+      "type": "string",
+      "example": "22222"
+    },
+    "event": {
+      "type": "string",
+      "example": "STARTUP"
+    },
+    "filename": {
+      "type": "string",
+      "example": "somefile.ext"
+    }
+  }
+}

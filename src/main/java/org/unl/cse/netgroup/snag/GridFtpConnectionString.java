@@ -14,6 +14,7 @@ public class GridFtpConnectionString {
     private IpAddress srchost, dsthost;
     private PortNumber srcport, dstport;
     private String username, event, filename;
+    private String enableDebug;
 
     public GridFtpConnectionString(String username,
                                    IpAddress srchost,
@@ -29,6 +30,10 @@ public class GridFtpConnectionString {
         this.username = username;
         this.event = event;
         this.filename = filename;
+    }
+
+    public GridFtpConnectionString(String enableDebug) {
+        this.enableDebug = enableDebug;
     }
 
     public String getUsername() {
@@ -87,6 +92,21 @@ public class GridFtpConnectionString {
         this.filename = filename;
     }
 
-    public void logStats(GridFtpConnectionString connectionString) {
+    public String getEnableDebug() {
+        return enableDebug;
+    }
+
+    public void logStats() {
+
+        StringBuilder sb = new StringBuilder();
+        sb.append(this.username).append(" ")
+                .append(this.srchost)
+                    .append(":").append(this.srcport.toString())
+                    .append(" -> ").append(this.dsthost.toString())
+                    .append(":").append(this.dstport.toString())
+                    .append(" ").append(this.event)
+                    .append(" ").append(this.filename);
+        log.info(sb.toString());
+
     }
 }

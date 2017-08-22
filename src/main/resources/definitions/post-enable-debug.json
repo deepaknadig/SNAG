@@ -1,0 +1,12 @@
+{
+  "type": "object",
+  "required": [
+    "enable"
+  ],
+  "properties": {
+    "enable": {
+      "type": "string",
+      "example": "true"
+    }
+  }
+}

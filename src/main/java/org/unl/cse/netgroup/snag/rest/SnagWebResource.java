@@ -63,18 +63,57 @@ public class SnagWebResource extends AbstractWebResource {
      *
      * @return status of the request - CREATED if the JSON is correct,
      * BAD_REQUEST if the JSON is invalid
+     *
+     * @onos.rsModel post-transfers
      */
     @POST
-    @Path("tcp")
+    @Path("transfers")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response postedFlows(InputStream stream) throws IOException {
 
         connectionString = jsonToConnectionInfo(stream);
-        connectionString.logStats(connectionString);
-        
+        connectionString.logStats();
         return Response.ok(root).build();
     }
+
+    /**
+     * Debug mode for GridFTP transfer information
+     * Information only available to the server logs
+     * <br>
+     * Criteria description:
+     *
+     * @return server debug for transfer connections - CREATED if the JSON is correct,
+     * BAD_REQUEST if the JSON is invalid
+     *
+     * @onos.rsModel post-enable-debug
+     */
+    @POST
+    @Path("debug")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response enableDebug(InputStream stream) throws IOException {
+
+        JsonNode node;
+        try {
+            node = mapper().readTree(stream);
+        } catch (IOException e) {
+            throw new IllegalArgumentException("Unable to parse Debug POST request.", e);
+        }
+
+        String isDebug = node.path("enable").asText(null);
+
+        if (isDebug != null && isDebug.equals("true")) {
+            connectionString.logStats();
+        }
+        else {
+            throw new IllegalArgumentException("Arguments cannot be null");
+        }
+
+        return Response.ok(root).build();
+    }
+
+
 
     private GridFtpConnectionString jsonToConnectionInfo(InputStream stream) {
         JsonNode node;
